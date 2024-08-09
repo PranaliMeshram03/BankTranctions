@@ -1,0 +1,73 @@
+﻿@model BankTranctions.Models.User
+
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="container IndexDiv" style="max-height: 500px; overflow-y: auto;">
+    <div class="row justify-content-center">
+        <div class="col-md-4 ">
+            <div class="form-container">
+        <form asp-action="Register" >
+
+                <h5 class="text-white">Register User</h5>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+          
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                        <select asp-for="Gender" asp-items="@ViewBag.Gender" class="form-control">
+                            <option value="">Select Gender</option>
+                        </select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Country" class="control-label"></label>
+                        @Html.DropDownListFor(model =>model.Country , ViewBag.Countries as SelectList ,"Select Country" ,new {@class = "form-control"} )
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+                    <div class="form-group">
+                        <label asp-for="State" class="control-label"></label>
+                        <!-- Use Html.DropDownListFor to render the dropdown list -->
+                        @Html.DropDownListFor(model => model.State, ViewBag.States as SelectList, "Select State", new { @class = "form-control" })
+                        <span asp-validation-for="State" class="text-danger"></span>
+                    </div>
+
+                <div class="row mt-2">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary text-white" value="Create">
+                        </div>
+                    </div>
+                </div>
+        </form>
+            </div>
+    </div>
+</div>
+
+     
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

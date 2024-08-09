@@ -1,0 +1,63 @@
+﻿@model BankTranctions.Models.User
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+<div class="container IndexDiv">
+
+    <div class="row" style="width:250px">
+        <div class="col-3 container CenteredContainer text-center">
+            <section>
+                <form id="user" method="post">
+                    <h5 class="text-white">Login User</h5>
+                    <hr />
+
+                    <div class="form-group">
+                        <div class="label-wrapper">
+                            <label class="text-white" asp-for="Email" class="control-label">Email</label>
+                        </div>
+                        <input asp-for="Email" class="form-control" placeholder="Enter Email" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <br /> 
+                    <div class="form-group">
+                        <div class="label-wrapper">
+                            <label class="text-white" asp-for="Password" class="control-label"></label>
+                        </div>
+                        <input asp-for="Password" class="form-control" placeholder="Enter Password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+
+                    <br /> 
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="submit" value="Log in" class="btn btn-primary w-100" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <a asp-action="Register" class="btn btn-secondary">Create Acount</a>
+                        </div>
+                    </div>
+                    @* <div class="form-group">
+                        <input type="submit" class="btn btn-danger text-white" value="Log in">
+                    </div>
+             
+                    <div class="form-group">
+                        <a asp-action="Register">Create Acount</a>
+                    </div> *@
+                </form>
+            </section>
+        </div>
+
+
+
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
